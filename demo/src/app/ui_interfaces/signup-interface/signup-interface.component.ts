@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { AuthService } from '../../auth-service';
+import { Register } from '../../shared/user/register.model';
+import { AngularFireAuth } from "angularfire2/auth";
+
+
+
 @Component({
   selector: 'app-signup-interface',
   templateUrl: './signup-interface.component.html',
@@ -8,19 +13,27 @@ import { AuthService } from '../../auth-service';
 })
 export class SignupInterfaceComponent implements OnInit {
 
-  constructor( private authService : AuthService) { }
+  user = {} as Register;
 
-  ngOnInit() {
+  constructor( private afAuth: AngularFireAuth ) {
   }
 
-  onSubmit( form : NgForm ){
-    const firstname = form.value.first_name;
-    const lastname = form.value.last_name;
-    const email = form.value.email;
-    const password = form.value.password;
-    this.authService.signup(email , password);
 
+  async register( user: Register ){
+    try {
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.index, user.password);
+      console.log(result);
+      if (result) {
+        console.log(result); 
+      }
+      
+    } catch (error) {
+      console.error(error);
+      
+    }
+  }
 
+  ngOnInit() {
   }
 
 }

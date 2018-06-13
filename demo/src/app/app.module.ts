@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth-service';
 import { GetdetailsComponent } from './ui_interfaces/getdetails/getdetails.component';
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { GetdetailsComponent } from './ui_interfaces/getdetails/getdetails.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

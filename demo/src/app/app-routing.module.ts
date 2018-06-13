@@ -7,7 +7,8 @@ import { GetdetailsComponent } from './ui_interfaces/getdetails/getdetails.compo
 const appRoutes: Routes = [
     // { path:'' , component: SignupInterfaceComponent },
     { path:'' , component: LoginInterfaceComponent},
-    { path:'getdetails' , component: GetdetailsComponent} 
+    { path:'getdetails' , component: GetdetailsComponent},
+    { path:'register' , component: SignupInterfaceComponent},
 
 ];
 
