@@ -1,6 +1,6 @@
 export class Register {
 
-    index: string;
+    name: string;
     password: string;
 
 }
