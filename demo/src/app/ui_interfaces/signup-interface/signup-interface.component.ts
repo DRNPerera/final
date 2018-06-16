@@ -21,7 +21,7 @@ export class SignupInterfaceComponent implements OnInit {
 
   async register( user: Register ){
     try {
-      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.index, user.password);
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.name, user.password);
       console.log(result);
       if (result) {
         console.log(result); 
