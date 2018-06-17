@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
+
+
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,14 +13,19 @@ import * as firebase from 'firebase'
 export class AppComponent implements OnInit{
   title = 'app';
 
+  token: string;
+  
+  constructor(private authService: AuthService,private router: Router){
+  }
+
   ngOnInit(){
-    firebase.initializeApp(
-      {
-        
-          apiKey: "AIzaSyD1aNtTMDXFPxDBoS6gObtKQuGEGbkSRUM",
-          authDomain: "angularfirebase-28ed6.firebaseapp.com",
-          
-      }
-    );
+  }
+
+  onLogout(){
+    this.authService.logout();
+  }
+  
+  checkUserLoggedIn(){
+    return localStorage.getItem('isLoggedIn') ? true : false;
   }
 }
